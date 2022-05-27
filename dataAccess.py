@@ -8,4 +8,16 @@ class DataAccess(object):
 
     def getData(self):
         return self.dfdata
+    
+    def SaveRecord(self, boxId, location, username, rfid):
+        dfadd = pd.DataFrame(
+        {"Box": [boxId],
+        "RFID": [rfid],
+        "Location": [Location],
+        "User": [username]})
+        self.dfdata
+         
+       
+        dfdata= pd.concat(frame)
+
 
