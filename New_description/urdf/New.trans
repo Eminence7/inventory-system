@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<robot name="New" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<transmission name="Slider3_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Slider3">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Slider3_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="Slider4_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Slider4">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Slider4_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="Slider6_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Slider6">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Slider6_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+</robot>

@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<robot name="New" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find New_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find New_description)/urdf/New.trans" />
+<xacro:include filename="$(find New_description)/urdf/New.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.15465238893376296 0.04832852949683182 0.11924833678969428" rpy="0 0 0"/>
+    <mass value="3.783807229463217"/>
+    <inertia ixx="0.071959" iyy="0.155327" izz="0.111446" ixy="2e-06" iyz="-0.0118" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="zmount_1_1">
+  <inertial>
+    <origin xyz="0.12070384738191567 -0.0032088303981771607 -0.08104114327404147" rpy="0 0 0"/>
+    <mass value="0.23288505137836263"/>
+    <inertia ixx="0.000393" iyy="0.000535" izz="0.000487" ixy="-5e-06" iyz="2e-06" ixz="0.000134"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.071692 0.060686 -0.236273" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/zmount_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.071692 0.060686 -0.236273" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/zmount_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="slider_lift_1_1">
+  <inertial>
+    <origin xyz="0.050064570642213424 -0.014001569889944297 -0.032322999499241" rpy="0 0 0"/>
+    <mass value="0.05906883337596857"/>
+    <inertia ixx="4.8e-05" iyy="4.4e-05" izz="9.1e-05" ixy="0.0" iyz="-1e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.184051 0.060589 -0.17687" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/slider_lift_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.184051 0.060589 -0.17687" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/slider_lift_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="xslider_column_1_1">
+  <inertial>
+    <origin xyz="-0.028480965285904408 0.07498302928002025 0.05386226010733343" rpy="0 0 0"/>
+    <mass value="0.35895683619856983"/>
+    <inertia ixx="0.004454" iyy="0.004461" izz="0.002051" ixy="-0.0" iyz="7e-06" ixz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.185221 0.139188 -0.018888" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/xslider_column_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.185221 0.139188 -0.018888" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://New_description/meshes/xslider_column_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Slider3" type="prismatic">
+  <origin xyz="-0.113529 0.078502 0.217385" rpy="0 0 0"/>
+  <parent link="xslider_column_1_1"/>
+  <child link="zmount_1_1"/>
+  <axis xyz="-0.0 -0.0 -1.0"/>
+  <limit upper="0.0" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Slider4" type="prismatic">
+  <origin xyz="0.112359 9.7e-05 -0.059403" rpy="0 0 0"/>
+  <parent link="zmount_1_1"/>
+  <child link="slider_lift_1_1"/>
+  <axis xyz="0.0 1.0 -0.0"/>
+  <limit upper="0.0" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Slider6" type="prismatic">
+  <origin xyz="0.185221 -0.139188 0.018888" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="xslider_column_1_1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+  <limit upper="0.0" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+</robot>
